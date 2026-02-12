@@ -1,95 +1,136 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Untuk Bogel ku tercinta❤️</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine untuk Salsa 💖</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
 
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        background: linear-gradient(135deg, #ff758c, #ff7eb3);
-        font-family: Arial, sans-serif;
-        text-align: center;
-        color: white;
-        overflow: hidden;
-    }
+        .container {
+            padding: 20px;
+        }
 
-    h1 {
-        margin-top: 100px;
-        font-size: 40px;
-    }
+        /* Animasi Selamat Hari Valentine */
+        .valentine-banner {
+            font-size: 2em;
+            font-weight: bold;
+            color: #ff4757;
+            margin-top: 20px;
+            animation: bounce 1s infinite alternate;
+        }
 
-    .buttons {
-        margin-top: 40px;
-        position: relative;
-        height: 200px;
-    }
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
 
-    button {
-        padding: 15px 30px;
-        font-size: 20px;
-        border: none;
-        border-radius: 30px;
-        cursor: pointer;
-        position: absolute;
-        transition: 0.3s;
-    }
+        h1 {
+            font-size: 2em;
+            margin-top: 10px;
+        }
 
-    #yesBtn {
-        background-color: white;
-        color: #ff4f81;
-        left: 40%;
-    }
+        img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 20px;
+            margin: 20px 0;
+        }
 
-    #noBtn {
-        background-color: #ff4f81;
-        color: white;
-        left: 55%;
-    }
+        button {
+            background-color: #ff6b6b;
+            border: none;
+            padding: 15px 25px;
+            font-size: 1em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
 
-    .message {
-        display: none;
-        margin-top: 50px;
-        font-size: 25px;
-        animation: fadeIn 2s;
-    }
+        button:hover {
+            background-color: #ff4757;
+        }
 
-    @keyframes fadeIn {
-        from {opacity: 0;}
-        to {opacity: 1;}
-    }
-</style>
+        #answer {
+            margin-top: 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .heart {
+            color: #ff4757;
+            font-size: 2em;
+            animation: beat 1s infinite;
+        }
+
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+
+        /* Hati animasi jatuh */
+        .falling-heart {
+            position: fixed;
+            top: -50px;
+            font-size: 1.5em;
+            color: #ff4757;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Banner Selamat Hari Valentine -->
+    <div class="valentine-banner">Selamat Hari Valentine, Salsa! 💖</div>
 
-<h1>Kamu Sayang Aku Nggak? 😏❤️</h1>
+    <div class="container">
+        <p class="heart">❤️</p>
+        <img src="https://images.unsplash.com/photo-1606312611640-72a8fbbf8683?auto=format&fit=crop&w=800&q=80" alt="Valentine Image">
+        <p>Aku punya pertanyaan untukmu, Salsa:</p>
+        <p><strong>"Apa hal kecil yang selalu bikin kamu tersenyum setiap hari?"</strong></p>
+        <button onclick="showAnswer()">Lihat Jawabanku</button>
+        <p id="answer"></p>
+    </div>
 
-<div class="buttons">
-    <button id="yesBtn" onclick="showLove()">Iya Dong 😍</button>
-    <button id="noBtn" onmouseover="moveButton()">Nggak 😜</button>
-</div>
+    <script>
+        // Jawaban acak
+        function showAnswer() {
+            const answers = [
+                "Melihat senyummu setiap hari 💕",
+                "Mendengar suaramu, Salsa 💖",
+                "Setiap momen kecil bersama kamu 🌹"
+            ];
+            const randomIndex = Math.floor(Math.random() * answers.length);
+            document.getElementById('answer').innerText = answers[randomIndex];
+        }
 
-<div class="message" id="loveMessage">
-    Aku tau kok kamu sayang banget sama aku 😆💖  
-    Happy Valentine Sayangkuuuuu ❤️ walapun bukan valentie cinta bogel setiap hariii yeyyy
-</div>
+        // Buat hati jatuh di layar
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'falling-heart';
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.innerText = '❤️';
+            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }
 
-<script>
-function moveButton() {
-    var button = document.getElementById("noBtn");
-    var x = Math.random() * (window.innerWidth - 150);
-    var y = Math.random() * (window.innerHeight - 150);
-    button.style.left = x + "px";
-    button.style.top = y + "px";
-}
-
-function showLove() {
-    document.getElementById("loveMessage").style.display = "block";
-}
-</script>
-
+        setInterval(createHeart, 500);
+    </script>
 </body>
 </html>
